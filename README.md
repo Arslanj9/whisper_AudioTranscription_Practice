@@ -14,11 +14,12 @@ python -m venv venv
 venv\Scripts\activate
 # macOS/Linux
 source venv/bin/activate
+```
 
+## Run the backend server:
 
-Run the backend server:
-
+```bash
 uvicorn app:app --reload
 
-
+```
 
