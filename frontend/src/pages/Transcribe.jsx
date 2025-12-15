@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Transcribe() {
   const [file, setFile] = useState(null);
   const [transcription, setTranscription] = useState("");
+  const [detectedLanguage, setDetectedLanguage] = useState("");
 
   const handleUpload = async () => {
     if (!file) return;
@@ -17,7 +18,9 @@ export default function Transcribe() {
 
     const data = await response.json();
     console.log(data);
+
     setTranscription(data.transcription);
+    setDetectedLanguage(data.detected_language); // <-- store detected language
   };
 
   return (
@@ -34,6 +37,9 @@ export default function Transcribe() {
 
       <h2>Transcription:</h2>
       <p>{transcription}</p>
+
+      <h2>Detected Language:</h2>
+      <p>{detectedLanguage}</p> {/* <-- display detected language */}
     </div>
   );
 }
